@@ -35,6 +35,7 @@ env MIN_UPTIME="{{ item.min_uptime|default(5000) }}"
 env SPIN_SLEEP_TIME="{{ item.spin_sleep_time|default(2000) }}"
 # The command executed by Forever to run the application.
 env COMMAND="{{item.command|default('node')}}"
+env APP_WORKING_DIR="{{item.working_dir|default('.')}}"
 # Application specific environment variables.
 {% if forever_env is defined %}
 {% for key, value in forever_env.iteritems() %}
@@ -64,6 +65,7 @@ exec forever \
 -l $LOG \
 --minUptime $MIN_UPTIME \
 --spinSleepTime $SPIN_SLEEP_TIME \
+--workingDir $APP_WORKING_DIR \
 start $APPLICATION_PATH
 end script
 
