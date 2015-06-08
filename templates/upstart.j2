@@ -29,7 +29,7 @@ env APPLICATION_PATH="{{ item.file }}"
 # Process ID file path.
 env PIDFILE="{{ item.pid_file|default('/var/run/%s.pid' % item.name) }}"
 # Log file path.
-env LOG="{{ item.pid_file|default('/var/log/%s.log' % item.name) }}"
+env LOG="{{ item.log_file|default('/var/log/%s.log' % item.name) }}"
 # Forever settings to prevent the application spinning if it fails on launch.
 env MIN_UPTIME="{{ item.min_uptime|default(5000) }}"
 env SPIN_SLEEP_TIME="{{ item.spin_sleep_time|default(2000) }}"
